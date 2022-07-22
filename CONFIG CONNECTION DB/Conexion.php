@@ -1,12 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+<?php
+    class Conectar {
+       protected $dbh;
+
+        protected function Conexion() {
+            try{
+               $conectar = $this->dbh = new PDO("mysql:host=20.216.41.245;dbname=G9_19","G9_19","aSn2e4ri");
+               return $conectar;
+            } catch(Exception $e) {
+               print "Error BD!: " . $e->getMessage() . "<br/>";
+               die();
+            }
+        }
+        public function set_name(){
+           return $this->dbh->query("SET NAMES 'utf8'");
+        }
+    }
+?>
+
+
