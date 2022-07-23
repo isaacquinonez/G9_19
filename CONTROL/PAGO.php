@@ -12,8 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     header ('Access-Control-Allow-Origin: *');
     header ('Content-Type: application/json'); 
 
-    require_once ("../G9_19/CONFIG CONNECTION DB/conexion.php"); 
-    require_once ("../G9_19\MODELS CONEXION DB/PAGO.PHP "); 
+    require_once ("../G9_19/CONFIG/conexion.php"); 
+    require_once ("../G9_19\MODELS/PAGO.PHP "); 
     $pagos=new pagos();
 
     $body=json_decode(file_get_contents("php://input"),true) ;
