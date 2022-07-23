@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     header ('Content-Type: application/json'); 
 
     require_once ("C:/xampp/htdocs/G9_19/CONFIG CONNECTION DB/conexion.php"); 
-    require_once ("C:/xampp/htdocs/G9_19\MODELS CONEXION DB/CLIENTE.PHP "); 
+    require_once ("C:/xampp/htdocs/G9_19/MODELS CONEXION DB/CLIENTE.PHP "); 
     $cliente=new Clientes();
 
     $body=json_decode(file_get_contents("php://input"),true) ;
