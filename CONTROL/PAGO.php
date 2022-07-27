@@ -12,18 +12,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     header ('Access-Control-Allow-Origin: *');
     header ('Content-Type: application/json'); 
 
-    require_once ("../G9_19/CONFIG/conexion.php"); 
-    require_once ("../G9_19\MODELS/PAGO.PHP "); 
-    $pagos=new pagos();
+    require_once ("../CONFIG/Conexion.php"); 
+    require_once ("../MODELS/PAGO.php "); 
+    $pagos=new Pagos();
 
     $body=json_decode(file_get_contents("php://input"),true) ;
 
-    switch ($GET["op"]) {
+    switch ($_GET["op"]) {
 
 
-  	    case 'Getpagos':
-            $dato=$pagos->get_pagos($body["NUMERO_DE_PAGO"]);
-            echo json_decode($dato);
+  	    case 'GetPagos':
+            $dato=$pagos->get_pagos();
+            echo json_encode($dato);
         break;
 
     }
