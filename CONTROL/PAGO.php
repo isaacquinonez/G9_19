@@ -21,12 +21,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     switch ($_GET["op"]) {
 
 
-  	    case 'GetPagos':
+  	    case "GetPagos":
             $dato=$pagos->get_pagos();
             echo json_encode($dato);
         break;
 
+        case "GetPago":
+            $dato=$pagos->get_pago($body["NUMERO_DE_PAGO"]);
+            echo json_encode($dato);
+        break;
+
+        case "InsertPago":
+            $dato=$pagos->insert_pago($body["NUMERO_DE_PAGO"],$body["FECHA_DE_PAGO"],$body["MONTO_DE_PAGO"],$body["TIPO_DE_PAGO"],$body["NUMERO_DE_PEDIDO"],$body["EMPRESA"]);
+            echo json_encode("Pago Agregado");
+        break;
+
     }
-        
+        /*,$body["X"] */
 
 ?>  
