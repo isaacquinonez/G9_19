@@ -2,6 +2,8 @@
     
     class PRODUCTOS extends Conectar{
          
+       
+
         public function GET_PRODUCTOS(){
             $conectar= parent::Conexion();
             parent::set_names();
@@ -68,3 +70,4 @@
         }
     }
 ?>
+
