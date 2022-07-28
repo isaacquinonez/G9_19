@@ -12,21 +12,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     header ('Access-Control-Allow-Origin: *');
     header ('Content-Type: application/json'); 
 
-    require_once ("../G9_19/CONFIG CONNECTION DB/conexion.php"); 
-    require_once ("../G9_19\MODELS CONEXION DB/PAGO.PHP "); 
-    $pagos=new pagos();
+    require_once ("../CONFIG/Conexion.php"); 
+    require_once ("../MODELS/PAGO.php "); 
+    $pagos=new Pagos();
 
     $body=json_decode(file_get_contents("php://input"),true) ;
 
-    switch ($GET["op"]) {
+    switch ($_GET["op"]) {
 
 
-  	    case 'Getpagos':
-            $dato=$pagos->get_pagos($body["NUMERO_DE_PAGO"]);
-            echo json_decode($dato);
+  	    case "GetPagos":
+            $dato=$pagos->get_pagos();
+            echo json_encode($dato);
+        break;
+
+        case "GetPago":
+            $dato=$pagos->get_pago($body["NUMERO_DE_PAGO"]);
+            echo json_encode($dato);
+        break;
+
+        case "InsertPago":
+            $dato=$pagos->insert_pago($body["NUMERO_DE_PAGO"],$body["FECHA_DE_PAGO"],$body["MONTO_DE_PAGO"],$body["TIPO_DE_PAGO"],$body["NUMERO_DE_PEDIDO"],$body["EMPRESA"]);
+            echo json_encode("Pago Agregado");
         break;
 
     }
-        
+        /*,$body["X"] */
 
 ?>  
