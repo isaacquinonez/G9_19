@@ -33,10 +33,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
         case "InsertPago":
             $dato=$pagos->insert_pago($body["NUMERO_DE_PAGO"],$body["FECHA_DE_PAGO"],$body["MONTO_DE_PAGO"],$body["TIPO_DE_PAGO"],$body["NUMERO_DE_PEDIDO"],$body["EMPRESA"]);
-            echo json_encode("Pago Agregado");
+            echo json_encode("El Pago ha sido Agregado con éxito!");
+        break;
+
+        case "UpdatePago":
+            $dato=$pagos->update_pago($body["FECHA_DE_PAGO"],$body["MONTO_DE_PAGO"],$body["TIPO_DE_PAGO"],$body["NUMERO_DE_PEDIDO"],$body["EMPRESA"],$body["NUMERO_DE_PAGO"]);
+            echo json_encode("El Pago ha sido Actualizado con éxito!");
+        break;
+        
+        case 'DeletePago':
+            $dato=$pagos->delete_pago($body["NUMERO_DE_PAGO"]);
+            echo json_encode("El Pago ha sido Eliminado con éxito!");
         break;
 
     }
-        /*,$body["X"] */
+     
 
 ?>  
